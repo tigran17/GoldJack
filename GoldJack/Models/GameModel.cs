@@ -7,6 +7,6 @@ namespace GoldJack.Models
 {
     public class GameModel
     {
-
+        public int Bet { get; set; }
     }
 }
