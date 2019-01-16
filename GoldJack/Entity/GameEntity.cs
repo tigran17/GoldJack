@@ -7,6 +7,6 @@ namespace GoldJack.Entity
 {
     public class GameEntity
     {
-
+        public int Bet { get; set; }
     }
 }

@@ -9,4 +9,5 @@
 /.vs/GoldJack/v15/Server/sqlite3/db.lock
 .vs/
 GoldJack/bin/
-GoldJack/obj/
+/GoldJack/obj/Debug
+/.vs/GoldJack/v15
