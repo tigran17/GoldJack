@@ -1,29 +1,39 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using GoldJack.Service;
+using System;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 
 namespace GoldJack.Controllers.Api
 {
-    public class GameController : Controller
+    public class GameController : ApiController
     {
-        [HttpPost]
-        public void StartGame()
-        {
-
-        }
-
         [HttpGet]
-        public int GetCoinValue()
+        public HttpResponseMessage StartGame()
         {
-            return 0;
+            try
+            {
+                var service = new GameService();
+                var result = service.GetRange();
+                return Request.CreateResponse<string>(HttpStatusCode.OK, result); ;
+            }
+            catch(Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
+            }
+            
         }
 
-        [HttpGet]
-        public void GetRange()
-        {
+        //[HttpGet]
+        //public int GetCoinValue()
+        //{
+        //    return 0;
+        //}
 
-        }
+        //[HttpGet]
+        //public void GetRange()
+        //{
+
+        //}
     }
 }

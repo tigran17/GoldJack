@@ -9,9 +9,17 @@ namespace GoldJack.Service
     public class GameService
     {
         private GameEntity game;
+        public static int GameNumber { get; set; }
+
         public GameService()
         {
+            GameNumber++;
+            game = new GameEntity();
+        }
 
+        public string GetRange()
+        {
+            return game.GetRange();
         }
     }
 }
