@@ -21,5 +21,10 @@ namespace GoldJack.Service
         {
             return game.GetRange();
         }
+
+        public int GetCoinValue(int pos)
+        {
+            return game.GetCoinValue(pos);
+        }
     }
 }

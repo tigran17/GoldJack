@@ -9,6 +9,9 @@ namespace GoldJack.Constants
     {
         public static readonly int Range = 6;
         public static readonly int MinNumber = 6;
-        public static readonly int MaxNumber = 57;
+        public static readonly int MaxNumber = 52;
+        public static readonly int MaxCoinValue = 20;
+        public static readonly int MinCoinValue = 1;
+        public static readonly int CoinCount = 20;
     }
 }
