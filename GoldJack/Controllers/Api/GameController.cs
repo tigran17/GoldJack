@@ -1,14 +1,18 @@
-﻿using GoldJack.Service;
+﻿using GoldJack.Attributes;
+using GoldJack.Service;
 using System;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace GoldJack.Controllers.Api
 {
+    //[RequestFilter]
     public class GameController : ApiController
     {
         GameService _service;
+
         [HttpGet]
         public HttpResponseMessage StartGame()
         {
