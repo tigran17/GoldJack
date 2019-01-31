@@ -13,3 +13,6 @@ GoldJack/bin/
 /.vs/GoldJack/v15
 /packages
 /GoldJack/obj/Release
+/DataAccess/bin/Debug
+/DataAccess/obj/Debug
+/GoldJack/App_Data

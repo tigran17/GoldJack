@@ -1,4 +1,5 @@
 ﻿using GoldJack.Attributes;
+using GoldJack.Models;
 using GoldJack.Service;
 using System;
 using System.Net;
@@ -13,14 +14,15 @@ namespace GoldJack.Controllers.Api
     {
         GameService _service;
 
-        [HttpGet]
-        public HttpResponseMessage StartGame()
+        [HttpPost]
+        public HttpResponseMessage StartGame(GameModel model)
         {
             try
             {
-                _service = new GameService();
-                var result = _service.GetRange();
-                return Request.CreateResponse<string>(HttpStatusCode.OK, result);
+                var service = new GameService();
+
+                var result = service.StartGame(model);
+                return Request.CreateResponse<GameModel>(HttpStatusCode.OK, result);
             }
             catch(Exception e)
             {
@@ -29,7 +31,7 @@ namespace GoldJack.Controllers.Api
             
         }
 
-        [HttpGet]
+        [HttpPost]
         public HttpResponseMessage GetCoinValue(int pos)
         {
             if(_service == null)

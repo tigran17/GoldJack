@@ -14,9 +14,8 @@ namespace GoldJack.App_Start
         public static void Register(HttpConfiguration config)
         {
             // TODO: Add any additional configuration code.
-            config.Filters.Add(new RequestFilterAttribute());
-            //var cors = new EnableCorsAttribute("www.example.com", "*", "*");
-            //config.EnableCors(cors);
+            //config.Filters.Add(new RequestFilterAttribute());
+           
             // Web API routes
             config.MapHttpAttributeRoutes();
 
