@@ -12,7 +12,7 @@ namespace GoldJack.Controllers.Api
     //[RequestFilter]
     public class GameController : ApiController
     {
-        GameService _service;
+        //GameService _service;
 
         [HttpPost]
         public HttpResponseMessage StartGame(GameModel model)
@@ -28,25 +28,25 @@ namespace GoldJack.Controllers.Api
             {
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
             }
-            
         }
 
         [HttpPost]
-        public HttpResponseMessage GetCoinValue(int pos)
+        public HttpResponseMessage GetCoinByPosition(CoinModel coin)
         {
-            if(_service == null)
+            try
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Game has been not started");
+                var service = new GameService();
+                var result = service.GetCoinByPosition(coin);
+
+                if (result == null)
+                    return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't find the coin");
+
+                return Request.CreateResponse<CoinModel>(HttpStatusCode.OK, result);
             }
-
-            var result = _service.GetCoinValue(pos);
-            return Request.CreateResponse<int>(HttpStatusCode.OK, result);
-        }
-
-        [HttpGet]
-        public void GetRange()
-        {
-
+            catch (Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
+            }
         }
     }
 }

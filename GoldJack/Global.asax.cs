@@ -1,6 +1,9 @@
-﻿using GoldJack.App_Start;
+﻿using DataAccess.DatabaseInitializer;
+using GoldJack.App_Start;
+using GoldJack.Mapping;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -19,6 +22,8 @@ namespace GoldJack
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+           // Database.SetInitializer(new UserInitializer());
+            AutoMapper.Mapper.Initialize(x => x.AddProfile<GameMapperProfile>());
         }
     }
 }

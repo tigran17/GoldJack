@@ -1,4 +1,5 @@
-﻿using DataAccess.DataProvider;
+﻿using AutoMapper;
+using DataAccess.DataProvider;
 using DataAccess.Entities;
 using GoldJack.Constants;
 using GoldJack.Models;
@@ -11,10 +12,21 @@ namespace GoldJack.Service
 {
     public class GameService
     {
-        private int _coinCount = GameConstants.CoinCount;
-
-        public GameModel StartGame(GameModel game)
+        //private int _coinCount = GameConstants.CoinCount;
+        private GameProvider _provider;
+        
+        public GameService()
         {
+            if (_provider == null)
+            {
+                _provider = new GameProvider();
+            }
+        }
+
+        public GameModel StartGame(GameModel model)
+        {
+            //TODO: Should init UserId from GameModel
+
             var gameEntity = new Game();
             var provider = new GameProvider();
 
@@ -22,26 +34,24 @@ namespace GoldJack.Service
             ShuffleCoins(gameEntity.Coins);
 
             gameEntity.Range = GetRange();
-
             gameEntity = provider.StartGame(gameEntity);
 
-            //TODO: Automapping
-
-            return game;
+            var gameModel = Mapper.Map<Game, GameModel>(gameEntity);
+            
+            return gameModel;
         }
 
-        private string GetRange()
+        public CoinModel GetCoinByPosition(CoinModel model)
         {
-            Random random = new Random();
-            int randomNumber = random.Next(GameConstants.MinNumber, GameConstants.MaxNumber);
-            string range = String.Format("{0} - {1}", randomNumber, randomNumber + GameConstants.Range);
+            var coinEntity = Mapper.Map<Coin>(model);
 
-            return range;
-        }
+            coinEntity = _provider.GetCoinByPosition(coinEntity);
 
-        public int GetCoinValue(int pos)
-        {
-            return 0;//game.GetCoinValue(pos);
+            if (coinEntity == null) return null;
+
+            model = Mapper.Map<Coin, CoinModel>(coinEntity);
+
+            return model;
         }
 
         //private functions
@@ -54,7 +64,7 @@ namespace GoldJack.Service
 
             for (int i = 0; i < GameConstants.CoinCount; i++)
             {
-                coins[i] = new Coin() { Value = i + 1, IsOpened = false };
+                coins.Add(new Coin() { Value = i + 1, IsOpened = false });
             }
 
             return coins;
@@ -70,6 +80,15 @@ namespace GoldJack.Service
             {
                 item.Position = ++i;
             }
+        }
+
+        private string GetRange()
+        {
+            Random random = new Random();
+            int randomNumber = random.Next(GameConstants.MinNumber, GameConstants.MaxNumber);
+            string range = String.Format("{0} - {1}", randomNumber, randomNumber + GameConstants.Range);
+
+            return range;
         }
 
         #endregion

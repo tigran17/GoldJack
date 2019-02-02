@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DatabaseInitializer\UserInitializer.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="DataProvider\GameProvider.cs" />
     <Compile Include="Entities\Coin.cs" />
