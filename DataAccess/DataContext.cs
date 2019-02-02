@@ -11,7 +11,6 @@ namespace DataAccess
         public DataContext():base("GoldJack")
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<DataContext, DataAccess.Migrations.Configuration>());
-            Database.SetInitializer<DataContext>(new UserInitializer());
         }
 
         public DbSet <User> Users { get; set; }
