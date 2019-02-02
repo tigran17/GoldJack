@@ -1,5 +1,6 @@
 namespace DataAccess.Migrations
 {
+    using DataAccess.Entities;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -14,10 +15,10 @@ namespace DataAccess.Migrations
 
         protected override void Seed(DataAccess.DataContext context)
         {
-            //  This method will be called after migrating to the latest version.
-
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
-            //  to avoid creating duplicate seed data.
+            context.Users.AddOrUpdate(x=> x.Id,
+                new User() { Name = "UserName", Surename = "UserSurename", PersonalId = "1" },
+                new User() { Name = "UserName1", Surename = "UserSurename1", PersonalId = "2" },
+                new User() { Name = "UserName2", Surename = "UserSurename2", PersonalId = "3" });
         }
     }
 }

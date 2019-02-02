@@ -22,7 +22,6 @@ namespace GoldJack
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-           // Database.SetInitializer(new UserInitializer());
             AutoMapper.Mapper.Initialize(x => x.AddProfile<GameMapperProfile>());
         }
     }

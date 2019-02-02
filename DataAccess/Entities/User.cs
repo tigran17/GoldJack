@@ -12,7 +12,7 @@ namespace DataAccess.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public int PersonalId { get; set; }
+        public string PersonalId { get; set; }
 
         public string Name { get; set; }
 
