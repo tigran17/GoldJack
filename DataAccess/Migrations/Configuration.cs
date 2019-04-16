@@ -15,10 +15,15 @@ namespace DataAccess.Migrations
 
         protected override void Seed(DataAccess.DataContext context)
         {
-            context.Users.AddOrUpdate(x=> x.Id,
-                new User() { Name = "UserName", Surename = "UserSurename", PersonalId = "1" },
-                new User() { Name = "UserName1", Surename = "UserSurename1", PersonalId = "2" },
-                new User() { Name = "UserName2", Surename = "UserSurename2", PersonalId = "3" });
+            context.Users.Add(new User() {
+                 Name = "UserName",
+                 Surename = "UserSurename",
+                 Email = "Email",
+                 Balance = 1000.00,
+                 PersonalId = "AKCDRTE",
+                 Login = "Login",
+                 Password = "PAssword"
+            });
         }
     }
 }

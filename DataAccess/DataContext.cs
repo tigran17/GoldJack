@@ -1,6 +1,5 @@
 namespace DataAccess
 {
-    using DataAccess.DatabaseInitializer;
     using DataAccess.Entities;
     using System;
     using System.Data.Entity;

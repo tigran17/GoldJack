@@ -23,17 +23,30 @@ namespace GoldJack.Service
             }
         }
 
+        public GameModel GetGame (GameModel model)
+        {
+            //TODO: Should initialize User
+            model.UserId = 6; //HARD CODE
+
+            var gameEntity = Mapper.Map<Game>(model);
+
+            _provider.GetGame(gameEntity);
+
+            return model;
+        }
+
         public GameModel StartGame(GameModel model)
         {
-            //TODO: Should init UserId from GameModel
-
             var gameEntity = new Game();
             var provider = new GameProvider();
 
+            //TODO:Check User Balance
+            //TODO: Should init User
+            gameEntity.UserId = 6;  //Hard Code
             gameEntity.Coins = CreateCoins();
             ShuffleCoins(gameEntity.Coins);
-
             gameEntity.Range = GetRange();
+
             gameEntity = provider.StartGame(gameEntity);
 
             var gameModel = Mapper.Map<Game, GameModel>(gameEntity);
@@ -90,6 +103,11 @@ namespace GoldJack.Service
 
             return range;
         }
+
+        //private bool CheckGameResult(CoinModel model)
+        //{
+
+        //}
 
         #endregion
     }

@@ -1,5 +1,4 @@
-﻿using DataAccess.DatabaseInitializer;
-using GoldJack.App_Start;
+﻿using GoldJack.App_Start;
 using GoldJack.Mapping;
 using System;
 using System.Collections.Generic;

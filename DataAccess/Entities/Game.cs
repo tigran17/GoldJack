@@ -29,6 +29,8 @@ namespace DataAccess.Entities
 
         public Int16 GameNumber { get; set; }
 
+        public bool IsEnded { get; set; }
+
         [NotMapped]
         public List<Coin> Coins { get; set; }
 

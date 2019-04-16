@@ -14,6 +14,23 @@ namespace GoldJack.Controllers.Api
     {
         //GameService _service;
 
+
+        [HttpPost]
+        public HttpResponseMessage GetGame(GameModel model)
+        {
+            try
+            {
+                var service = new GameService();
+
+                var result = service.GetGame(model);
+                return Request.CreateResponse<GameModel>(HttpStatusCode.OK, result);
+            }
+            catch(Exception e)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
+            }
+        }
+
         [HttpPost]
         public HttpResponseMessage StartGame(GameModel model)
         {
@@ -48,5 +65,24 @@ namespace GoldJack.Controllers.Api
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
             }
         }
+
+        //[HttpPost]
+        //public HttpResponseMessage EndGame(GameModel model)
+        //{
+        //    try
+        //    {
+        //        var service = new GameService();
+        //        var result = service.GetCoinByPosition(coin);
+
+        //        //if (result == null)
+        //        //    return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, "Can't find the coin");
+
+        //        return Request.CreateResponse<GameModel>(HttpStatusCode.OK, result);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, e.Message);
+        //    }
+        //}
     }
 }

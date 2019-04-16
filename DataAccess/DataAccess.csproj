@@ -50,20 +50,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseInitializer\UserInitializer.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="DataProvider\GameProvider.cs" />
     <Compile Include="Entities\Coin.cs" />
     <Compile Include="Entities\GameDetails.cs" />
     <Compile Include="Entities\Game.cs" />
     <Compile Include="Entities\User.cs" />
-    <Compile Include="Migrations\201901312026153_GoldJack.cs" />
-    <Compile Include="Migrations\201901312026153_GoldJack.Designer.cs">
-      <DependentUpon>201901312026153_GoldJack.cs</DependentUpon>
+    <Compile Include="Migrations\201902030202182_j.cs" />
+    <Compile Include="Migrations\201902030202182_j.Designer.cs">
+      <DependentUpon>201902030202182_j.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201902022036369_GoldJack_2.cs" />
-    <Compile Include="Migrations\201902022036369_GoldJack_2.Designer.cs">
-      <DependentUpon>201902022036369_GoldJack_2.cs</DependentUpon>
+    <Compile Include="Migrations\201902032002586_GoldJack_1.cs" />
+    <Compile Include="Migrations\201902032002586_GoldJack_1.Designer.cs">
+      <DependentUpon>201902032002586_GoldJack_1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,11 +72,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901312026153_GoldJack.resx">
-      <DependentUpon>201901312026153_GoldJack.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902030202182_j.resx">
+      <DependentUpon>201902030202182_j.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201902022036369_GoldJack_2.resx">
-      <DependentUpon>201902022036369_GoldJack_2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201902032002586_GoldJack_1.resx">
+      <DependentUpon>201902032002586_GoldJack_1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

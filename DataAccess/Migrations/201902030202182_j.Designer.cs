@@ -7,13 +7,13 @@ namespace DataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class GoldJack_2 : IMigrationMetadata
+    public sealed partial class j : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(GoldJack_2));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(j));
         
         string IMigrationMetadata.Id
         {
-            get { return "201902022036369_GoldJack_2"; }
+            get { return "201902030202182_j"; }
         }
         
         string IMigrationMetadata.Source

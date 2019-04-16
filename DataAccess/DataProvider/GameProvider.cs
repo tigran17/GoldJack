@@ -19,20 +19,37 @@ namespace DataAccess.DataProvider
             }
         }
 
+        public Game GetGame(Game game)
+        {
+            var gameEntity = new Game();
+
+            using (_context)
+            {
+                gameEntity = _context.Games.Where(x => x.UserId == game.UserId).LastOrDefault();
+
+                if(gameEntity == null || gameEntity.IsEnded)
+                {
+                    return game;
+                }
+                else
+                {
+                    //TODO: Should be Implemented
+                    return game;
+                }
+            }
+        }
+
         public Game StartGame(Game game)
         {
             var gameEntity = new Game();
 
             using (_context)
             {
-                //Hard Code
-                game.UserId = 1;
-
                 _context.Games.Add(game);
                 _context.SaveChanges();
 
-                gameEntity = _context.Games.Where(x => x.UserId == game.UserId).OrderByDescending(x => x.Id)
-                    .FirstOrDefault();
+                gameEntity = _context.Games.Where(x => x.UserId == game.UserId)
+                    .OrderByDescending(x => x.Id).FirstOrDefault();
 
                 SaveGameCoins(gameEntity);
             }
@@ -56,6 +73,11 @@ namespace DataAccess.DataProvider
 
             return coin;
         }
+
+        //public List<Coin> GetAllOpenedCoins ()
+        //{
+
+        //}
 
 
         //private functions
